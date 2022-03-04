@@ -1,0 +1,181 @@
+1.virtual env installation
+
+pip3 install virtualenv 
+
+2. create env
+
+virtualenv test
+
+3. activate env
+
+source test/bin/activate
+
+4. deactivate env
+
+deactivate
+
+
+--------------------------------------------------------------------------
+1.installation of django
+
+pip install django
+
+
+django-admin --version.
+
+
+---------------------------------------------------------------------------
+
+1.create django project
+
+django-admin startproject mainproject
+
+
+2. run server
+
+python manage.py runserver
+
+
+3. files description
+
+manage.py -> is like entry point for our project
+urls.py -> defiing routes to our apps
+__init__py -> it indicates the folder as package
+settings.py -> responsible for conf ,installed apps , static files ,media files(db files)
+
+-------------------------------------------------------------------------------------
+
+1. create app for induail tasks
+
+
+python manage.py startapp firstapp
+
+
+2. files description
+
+    tests.py -> is for testing,unit testing
+    admin.py -> add models to admin ui , for updating DB
+    views.py -> responsible for models and views manipulating
+    apps.py -> responsible for installing app in settings.py files
+    urls.py -> we have to create manually this file ,responsible for routes
+    models.py ->write models here
+
+--------------------------------------------------------------------------------------------
+
+1. if you want add html files create empty folder add html files and register in "DIRS" in settings.py file
+
+
+------------------------------------------------------------------------------------------------------------
+
+1.adding static files
+
+add STATICFILES_DIRS = [ os.path.join(BASE_DIR,"folder_name")]  and add {% load static %} in html file
+
+2. if you want to collect all static  files into one folder
+
+add STATIC_ROOT = [os.path.join(BASE_DIR,"assets")] and run python manage.py collectstatic
+
+--------------------------------------------------------------------------------------------------------------------
+
+migrations
+
+1. install mysql server
+
+sudo apt-get install python3-dev
+sudo apt-get install python3-dev libmysqlclient-dev
+pip install mysqlclient
+sudo apt-get install mysql-server
+systemctl status mysql.service
+
+
+2.add db options in settings.py
+
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'django', #db name
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost'
+    }
+
+3. add app registraion installed apps
+
+  app_name.apps.className
+
+
+4. python manage.py runserver localhost:8000
+
+
+5. python manage.py makemigrations 
+ it will crate model files in migrations folder
+
+6. python manage.py sqlmigrate appname migration_number
+
+    it will generate sql query
+
+7.python manage.py migrate 
+ it will add table in db
+
+
+ --------------------------------------------------------------------------------------------
+
+ 1. python manage.py createsuperuser
+
+    it will add admin
+
+2. from .model import className in admin.py
+   admin.site.register(className)
+
+3. login localhost:8000/admin
+
+ add data to table
+
+---------------------------------------------------------------------------------
+
+1. from .models import className  in views.py
+
+   -> read    className.objects.all()
+      read    Book.objects.get(id = book_id)
+    
+    ->delete 
+
+    book_sel = Book.objects.get(id = book_id)
+    book_sel.delete()
+
+    ->write 
+
+    className.objects.create(keyname = "value") 
+
+    or 
+
+    >>> a = Album(title = "Divide", artist = "Ed Sheeran", genre = "Pop")
+    >>> a.save()
+
+    ->update
+
+    >>> a = Album.objects.get(pk = 3)
+    >>> a.genre = "Pop"
+    >>> a.save()
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------
+use it for file storage in DB
+
+1. if you want use models.ImageField() install pip install pillow
+
+
+add it in settings.py file
+MEDIA_URL = '/media/'                        tells browsers to bring files from here
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')   tells server to store the files files
+
+
+
+
