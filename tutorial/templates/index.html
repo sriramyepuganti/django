@@ -1,0 +1,17 @@
+{%  load static %}
+{% static "" as media %}
+
+<html>
+    <head>
+        <title>test</title>
+        <link href="{% static 'index.css' %}" rel="stylesheet"/>
+        <script src="{% static 'index.js' %}"></script>
+    </head>
+    <body>
+        <nav>
+            heading
+        </nav>      
+        {% block component %}{% endblock %}
+        <footer>footer</footer>
+    </body>
+</html>

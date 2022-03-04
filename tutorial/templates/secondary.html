@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block component %}
+<h1>{{media}}</h1>
+        <hr>
+        {% if if_exmp %}
+        <h1>if block</h1>
+        {% comment %} {% elif %}
+        <h1>else if block</h1> {% endcomment %}
+        {% else %}
+        <h1>else block</h1>
+        {% endif %}
+        <hr/>
+        <div>
+            <h1>For loop</h1>
+            {% for value in forloop_exmp%}
+                <h1>{{value}}</h1>
+            {% endfor %}
+        </div>
+        <div class="grid-box">
+            {% comment %} load image file {% endcomment %}
+            <img src="{% static 'image.jpg' %}"/>  
+            {% comment %} load static file as variable {% endcomment %}
+            <img src="{{media}}image.jpg"/> 
+        </div>
+{% endblock component %}
