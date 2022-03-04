@@ -176,6 +176,13 @@ add it in settings.py file
 MEDIA_URL = '/media/'                        tells browsers to bring files from here
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')   tells server to store the files files
 
+-------------------------------------------------------------------------------------------------------------
 
+1. list installed packages
+    pip freeze 
+2. add installed package list to requirements.txt
+    pip freeze > requirements.txt
+3. install packages mentioned in requirements.txt file
+    pip install -r requirements.txt
 
 
